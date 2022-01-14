@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FieldController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get("/list", [FieldController::class, "list"]);
+
+Route::get("/view/{id}", [FieldController::class, "view"]);
+
+Route::post("/create", [FieldController::class, "create"]);
+
+Route::put("/edit/{id}", [FieldController::class, "edit"]);
